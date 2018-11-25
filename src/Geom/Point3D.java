@@ -35,30 +35,45 @@ public class Point3D implements Geom_element, Serializable
 	///////////////////////////////////////////////////////////////////////////
 
 	
-	public double x() {return _x;}
-	public double y() {return _y;}
-	public double z() {return _z;}
-	public int ix() {return (int)_x;}
-	public int iy() {return (int)_y;}
-	public int iz() {return (int)_z;}
+	public double x() {
+		return _x;
+		}
+	public double y() {
+		return _y;
+		}
+	public double z() {
+		return _z;
+		}
+	public int ix() {
+		return (int)_x;
+		}
+	public int iy() {
+		return (int)_y;
+		}
+	public int iz() {
+		return (int)_z;
+		}
 		
-	public void add(Point3D p) { add(p._x,p._y,p._z);}
+	public void add(Point3D p) {
+		add(p._x,p._y,p._z);
+		}
 	public void add(double dx, double dy, double dz) {
 			_x+=dx;_y+=dy;_z+=dz;
 		}
-	public void add(double x, double y){this.add(x,y,0);}
+	public void add(double x, double y){
+		this.add(x,y,0);
+		}
 
-	public String toString() 
-	{
+	public String toString() {
 		return ""+_x+","+_y+","+_z;
 	}
 	public double distance2D(Point3D p2) { 
 		return this.distance3D(p2.x(), p2.y(), this.z());
 	}
 	public double distance3D(Point3D p2) {
-		return this.distance3D(p2.x(), p2.y(), p2.z());}
-	public double distance3D(double x, double y , double z)
-	{
+		return this.distance3D(p2.x(), p2.y(), p2.z());
+		}
+	public double distance3D(double x, double y , double z) {
 		double dx = _x-x;
 		double dy = _y-y;
 		double dz = _z-z;
@@ -66,20 +81,23 @@ public class Point3D implements Geom_element, Serializable
 		return Math.sqrt(t);
 	}
 
-	public boolean equals(Point3D p2)
-	{
+	public boolean equals(Point3D p2) {
 		return ( (_x==p2._x) && (_y==p2._y) && (_z==p2._z) );
 	}
-	public boolean close2equals(Point3D p2, double dist)
-	{
+	public boolean close2equals(Point3D p2, double dist) {
 		return ( this.distance3D(p2)< dist );
 	}
-	  public boolean equalsXY (Point3D p)
-	    {return p._x == _x && p._y == _y;}
+	  public boolean equalsXY (Point3D p) {
+		  return p._x == _x && p._y == _y;
+		  }
 	    
-    public String toFile()  {return _x+","+_y+","+_z;}
+    public String toFile()  {
+    	return _x+","+_y+","+_z;
+    	}
     
-    public String toFile1()  {return "Point3D "+_x+" "+_y+" "+_z;}
+    public String toFile1()  {
+    	return "Point3D "+_x+" "+_y+" "+_z;
+    	}
 
     ////////////////////////////////////////////////////////////////////////////////////////
 
