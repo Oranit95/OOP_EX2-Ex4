@@ -3,15 +3,14 @@ package Coords;
 import Geom.Point3D;
 
 public class MyCoords implements coords_converter{
-
+	 private static final double EarthR = 6371000;
 
 	/** 
 	 * computes a new point which is the gps point transformed by a 3D vector (in meters)
 	 */
 	@Override
 	public Point3D add(Point3D gps, Point3D vector) {
-		double y,x,z,lonNorm,EarthR;
-		EarthR = 6371000;
+		double y,x,z,lonNorm;
 		lonNorm = Math.cos((gps.x()*Math.PI)/180);
 		x = gps.x()+Math.toDegrees(Math.asin(vector.x()/EarthR));
 		y = gps.y()+Math.toDegrees(Math.asin(vector.y()/(EarthR*lonNorm)));
@@ -24,15 +23,21 @@ public class MyCoords implements coords_converter{
 	 */
 	@Override
 	public double distance3d(Point3D gps0, Point3D gps1) {
-
-		return 0;
+		Point3D vectorDis = new Point3D(this.vector3D(gps0, gps1));
+		return vectorDis.distance3D(vectorDis);
 	}
 	/**
 	 *  computes the 3D vector (in meters) between two gps like points
 	 */
 	@Override
 	public Point3D vector3D(Point3D gps0, Point3D gps1) {
-		return null;
+		double xMeter,yMeter,zMeter,lonNorm;
+		lonNorm = Math.cos((gps0.x()*Math.PI)/180);
+		xMeter = Math.sin(Math.toRadians(gps1.x()-gps0.x()))*EarthR;
+		yMeter = Math.sin(Math.toRadians(gps1.y()-gps0.y()))*EarthR*lonNorm;
+		zMeter = gps0.z()-gps1.z();
+		Point3D vector = new Point3D(xMeter,yMeter,zMeter); 
+		return vector;
 	}
 	/**
 	 * computes the polar representation of the 3D vector be gps0-->gps1 
@@ -40,6 +45,7 @@ public class MyCoords implements coords_converter{
 	 */
 	@Override
 	public double[] azimuth_elevation_dist(Point3D gps0, Point3D gps1) {
+		
 		return null;
 	}
 	/**
