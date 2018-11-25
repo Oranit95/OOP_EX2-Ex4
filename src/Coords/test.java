@@ -1,7 +1,6 @@
 package Coords;
 
 import Geom.Point3D;
-
 public class test {
 
 	public static void main(String[] args) {
@@ -10,7 +9,8 @@ public class test {
 	Point3D p2 = new Point3D(337.699,-359.249,-20);
 	MyCoords test = new MyCoords();
 	Point3D ptest=new Point3D( test.vector3D(p0, p1));
-	System.out.println(test.vector3D(p0, p1));
+	System.out.println(test.distance3d(p0, p1));
+	System.out.println(test.isValid_GPS_Point(p1));
 	}
 
 }

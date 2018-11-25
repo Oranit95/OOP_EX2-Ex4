@@ -2,6 +2,6 @@
 <classpath>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry kind="lib" path="C:/Users/Oranit/Documents/לימודים/שנה ב/מונחה עצמים/מטלה 2/OOP_EX2-EX4-master/json-simple-1.1.jar"/>
+	<classpathentry kind="lib" path="C:/json-simple-1.1.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

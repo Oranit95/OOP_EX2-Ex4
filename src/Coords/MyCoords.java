@@ -18,14 +18,16 @@ public class MyCoords implements coords_converter{
 		Point3D gps2 = new Point3D(x,y,z);
 		return gps2;
 	}
+	
 	/**
 	 * computes the 3D distance (in meters) between the two gps like points 
 	 */
 	@Override
 	public double distance3d(Point3D gps0, Point3D gps1) {
 		Point3D vectorDis = new Point3D(this.vector3D(gps0, gps1));
-		return vectorDis.distance3D(vectorDis);
+		return Math.sqrt(vectorDis.x()*vectorDis.x()+vectorDis.y()*vectorDis.y());
 	}
+	
 	/**
 	 *  computes the 3D vector (in meters) between two gps like points
 	 */
@@ -39,6 +41,7 @@ public class MyCoords implements coords_converter{
 		Point3D vector = new Point3D(xMeter,yMeter,zMeter); 
 		return vector;
 	}
+	
 	/**
 	 * computes the polar representation of the 3D vector be gps0-->gps1 
 	 * Note: this method should return an azimuth (aka yaw), elevation (pitch), and distance
@@ -48,6 +51,7 @@ public class MyCoords implements coords_converter{
 
 		return null;
 	}
+	
 	/**
 	 * return true iff this point is a valid lat, lon , lat coordinate: [-180,+180],[-90,+90],[-450, +inf]
 	 * @param p
@@ -55,9 +59,9 @@ public class MyCoords implements coords_converter{
 	 */
 	@Override
 	public boolean isValid_GPS_Point(Point3D p) {
-		if(-90>p.x()||p.x()>90) return false;
-		if(-180>p.y()||p.y()>190) return false;
-		if(-450>p.z()) return false;
+		if(-90>=p.x()||p.x()>=90) return false;
+		if(-180>=p.y()||p.y()>=190) return false;
+		if(-450>=p.z()) return false;
 		return true;
 	}
 }
