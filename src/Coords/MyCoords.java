@@ -3,7 +3,7 @@ package Coords;
 import Geom.Point3D;
 
 public class MyCoords implements coords_converter{
-	 private static final double EarthR = 6371000;
+	private static final double EarthR = 6371000;
 
 	/** 
 	 * computes a new point which is the gps point transformed by a 3D vector (in meters)
@@ -45,7 +45,7 @@ public class MyCoords implements coords_converter{
 	 */
 	@Override
 	public double[] azimuth_elevation_dist(Point3D gps0, Point3D gps1) {
-		
+
 		return null;
 	}
 	/**
@@ -55,7 +55,9 @@ public class MyCoords implements coords_converter{
 	 */
 	@Override
 	public boolean isValid_GPS_Point(Point3D p) {
-		return false;
+		if(-90>p.x()||p.x()>90) return false;
+		if(-180>p.y()||p.y()>190) return false;
+		if(-450>p.z()) return false;
+		return true;
 	}
-
 }
