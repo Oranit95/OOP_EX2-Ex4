@@ -1,5 +1,7 @@
 package Coords;
 
+import java.util.Arrays;
+
 import Geom.Point3D;
 public class test {
 
@@ -11,6 +13,8 @@ public class test {
 	Point3D ptest=new Point3D( test.vector3D(p0, p1));
 	System.out.println(test.distance3d(p0, p1));
 	System.out.println(test.isValid_GPS_Point(p1));
+	double arr[] = test.azimuth_elevation_dist(p0, p1);
+	System.out.println(Arrays.toString(arr));
 	}
 
 }
