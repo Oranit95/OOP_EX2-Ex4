@@ -48,7 +48,6 @@ public class MyCoords implements coords_converter{
 	 */
 	@Override
 	public double[] azimuth_elevation_dist(Point3D gps0, Point3D gps1) {
-
 		return null;
 	}
 	
