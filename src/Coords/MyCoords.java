@@ -52,7 +52,8 @@ public class MyCoords implements coords_converter{
 		double elevation = (180/Math.PI)*((gps1.z()-gps0.z())/dist-dist/(2*EarthR));
 		
 		double deltaD= gps1.y()-gps0.y();
-		double asimuth = Math.toDegrees(Math.atan2(Math.sin(Math.toRadians(deltaD))*Math.cos(Math.toRadians(gps1.x())), (Math.cos(Math.toRadians(gps0.x()))*Math.sin(Math.toRadians(gps1.x())))-Math.sin(Math.toRadians(gps0.x()))*Math.cos(Math.toRadians(gps1.x()))*Math.cos(Math.toRadians(deltaD))));
+		double asimuth = Math.toDegrees(Math.atan2(Math.sin(Math.toRadians(deltaD))*Math.cos(Math.toRadians(gps1.x())),
+				(Math.cos(Math.toRadians(gps0.x()))*Math.sin(Math.toRadians(gps1.x())))-Math.sin(Math.toRadians(gps0.x()))*Math.cos(Math.toRadians(gps1.x()))*Math.cos(Math.toRadians(deltaD))));
 		if (asimuth<0) asimuth+=360;
 		double[] Polar = {asimuth,elevation,dist};
 		return Polar;
