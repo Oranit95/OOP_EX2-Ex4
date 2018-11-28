@@ -50,9 +50,10 @@ public class metaData implements Meta_data {
 		return 0;
 	}
 	
-	/**
-	 * @return the orientation: yaw, pitch and roll associated with this data;
-	 */
+	public String toString() {
+		return this.MAC()+" "+this.SSID()+" "+this.AuthMode()+" "+this.FirstSeen()+" "+this.Channel()+" "+this.RSSI()+" "+this.AccuracyMeters()+" "+this.Type();
+	}
+
 	@Override
 	public Point3D get_Orientation() {
 		// TODO Auto-generated method stub

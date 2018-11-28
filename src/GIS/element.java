@@ -4,8 +4,8 @@ import Geom.Geom_element;
 import Geom.Point3D;
 
 public class element implements GIS_element {
-	Point3D Point;
-	metaData Data;
+	private Point3D Point;
+	private metaData Data;
 
 	public element(String mac, String ssid,String authMode, String ftSeen, String channel, String rssi, String lat, String lon, String alt, String accuMeters, String type) {
 		Point = new Point3D(lat,lon,alt);
