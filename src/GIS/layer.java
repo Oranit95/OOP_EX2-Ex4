@@ -2,19 +2,17 @@ package GIS;
 
 import java.util.Collection;
 import java.util.Iterator;
+import java.util.*;
 
-public class layer implements GIS_layer {
+public class layer extends ArrayList<element>  {
 
-	@Override
-	public boolean add(GIS_element arg0) {
-		return false;
+	private static final long serialVersionUID = 1L;
+	private element Element;
+	
+	
+	public layer () {
+		
 	}
-
-	@Override
-	public boolean addAll(Collection<? extends GIS_element> arg0) {
-		return false;
-	}
-
 	@Override
 	public void clear() {		
 	}
@@ -38,7 +36,7 @@ public class layer implements GIS_layer {
 	}
 
 	@Override
-	public Iterator<GIS_element> iterator() {
+	public Iterator<element> iterator() {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -79,7 +77,6 @@ public class layer implements GIS_layer {
 		return null;
 	}
 
-	@Override
 	public Meta_data get_Meta_data() {
 		// TODO Auto-generated method stub
 		return null;

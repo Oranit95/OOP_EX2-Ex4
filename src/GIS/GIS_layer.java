@@ -1,6 +1,8 @@
 package GIS;
-import java.util.Set;
-public interface GIS_layer extends Set<GIS_element>{
+
+import java.util.List;
+
+public interface GIS_layer {
 	public Meta_data get_Meta_data(); 
 	
 }

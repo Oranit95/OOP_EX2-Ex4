@@ -4,15 +4,23 @@ import Geom.Geom_element;
 import Geom.Point3D;
 
 public class element implements GIS_element {
+	Point3D Point;
+	metaData Data;
 
+	public element(String mac, String ssid,String authMode, String ftSeen, String channel, String rssi, String lat, String lon, String alt, String accuMeters, String type) {
+		Point = new Point3D(lat,lon,alt);
+		Data = new metaData(mac,ssid,authMode,ftSeen,channel,rssi,accuMeters,type);
+	}
+	
+	
 	@Override
 	public Geom_element getGeom() {
-		return null;
+		return Point;
 	}
 
 	@Override
 	public Meta_data getData() {
-		return null;
+		return Data;
 	}
 
 	@Override

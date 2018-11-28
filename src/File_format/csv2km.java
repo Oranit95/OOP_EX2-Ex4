@@ -11,7 +11,7 @@ public class csv2km {
 
     public static void main(String[] args) 
     {
-    	element gis = new element();
+    	//element gis = new element();
     	ArrayList<String> metaDeta = new ArrayList<String>();
         String csvFile = "WigleWifi_20171201110209.csv";
         String line = "";

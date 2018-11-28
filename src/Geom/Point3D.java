@@ -27,11 +27,10 @@ public class Point3D implements Geom_element, Serializable
 		this(x,y,0);
 	}
 
-	public Point3D(String s) {
-		String[] a = s.split(",");
-		_x = Double.parseDouble(a[0]);
-		_y = Double.parseDouble(a[1]);
-		_z = Double.parseDouble(a[2]);
+	public Point3D(String x,String y,String z) {
+		_x = Double.parseDouble(x);
+		_y = Double.parseDouble(y);
+		_z = Double.parseDouble(z);
 	}
 	///////////////////////////////////////////////////////////////////////////
 	////////////////////////////       methods        /////////////////////////
