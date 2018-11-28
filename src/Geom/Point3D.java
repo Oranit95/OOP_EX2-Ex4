@@ -8,7 +8,8 @@ public class Point3D implements Geom_element, Serializable
 	 */
 	private static final long serialVersionUID = 1L;
 	private double _x,_y,_z;
-
+	
+	
 	public Point3D(double x,double y,double z) 
 	{
 		_x=x;
