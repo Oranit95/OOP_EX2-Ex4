@@ -1,15 +1,13 @@
 package GIS;
 
-import Geom.Point3D;
 
-public class otherData implements Meta_data {
-	private String MAC, SSID, AuthMode,	FirstSeen, Channel,	RSSI, AccuracyMeters, Type;
+public class otherData {
+	private String MAC, SSID, AuthMode, Channel,	RSSI, AccuracyMeters, Type;
 	
-	public otherData(String mac, String ssid,String authMode, String ftSeen, String channel, String rssi, String accuMeters, String type) {
+	public otherData(String mac, String ssid,String authMode, String channel, String rssi, String accuMeters, String type) {
 		MAC = mac;
 		SSID = ssid;
 		AuthMode = authMode;
-		FirstSeen = ftSeen;
 		Channel = channel;
 		RSSI = rssi;
 		AccuracyMeters = accuMeters;
@@ -25,9 +23,6 @@ public class otherData implements Meta_data {
 	public String AuthMode() {
 		return AuthMode;
 	}
-	public String FirstSeen() {
-		return FirstSeen;
-	}
 	public String Channel() {
 		return Channel;
 	}
@@ -41,23 +36,10 @@ public class otherData implements Meta_data {
 		return Type;
 	}
 	
-	/**
-	 *  returns the Universal Time Clock associated with this data; 
-	 */
-	@Override
-	public long getUTC() {
-		
-		return 0;
-	}
 	
 	public String toString() {
-		return this.MAC()+" "+this.SSID()+" "+this.AuthMode()+" "+this.FirstSeen()+" "+this.Channel()+" "+this.RSSI()+" "+this.AccuracyMeters()+" "+this.Type();
+		return this.MAC()+" "+this.SSID()+" "+this.AuthMode()+" "+this.Channel()+" "+this.RSSI()+" "+this.AccuracyMeters()+" "+this.Type();
 	}
 
-	@Override
-	public Point3D get_Orientation() {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 }

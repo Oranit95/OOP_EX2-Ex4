@@ -1,22 +1,22 @@
 package GIS;
 
-import java.util.Collection;
-import java.util.Iterator;
 import java.util.LinkedHashSet;
-import java.util.Set;
+import java.util.Date;
 
-public class layer {
-	private Set<GIS_element> set;
+public class layer extends LinkedHashSet<GIS_element> {
+	private static final long serialVersionUID = 1L;
 	
+	private Meta_data data;
+	private Date date;
 
 
 	public layer() {
-		set = new LinkedHashSet<GIS_element>();
+		date = new Date();
+		data = new metaData("not yet complete");
 	}
 	
 	public Meta_data get_Meta_data() {
-		// TODO Auto-generated method stub
-		return null;
+		return data;
 	}
 
 }

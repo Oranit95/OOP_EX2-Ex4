@@ -11,6 +11,7 @@ public class element implements GIS_element {
 	public element(String mac, String ssid,String authMode, String ftSeen, String channel, String rssi, String lat, String lon, String alt, String accuMeters, String type) {
 		Point = new Point3D(lat,lon,alt);
 		Data = new metaData(ftSeen);
+		other = new otherData(mac,ssid,authMode,channel,rssi,accuMeters,type);
 	}
 	
 	
@@ -22,6 +23,10 @@ public class element implements GIS_element {
 	@Override
 	public Meta_data getData() {
 		return Data;
+	}
+	
+	public otherData getOtherData() {
+		return other;
 	}
 
 	@Override
