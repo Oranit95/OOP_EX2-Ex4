@@ -1,10 +1,8 @@
 package GIS;
 
-import java.text.DateFormat;
+import java.util.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Locale;
 
 import Geom.Point3D;
 
@@ -23,16 +21,17 @@ public class metaData implements Meta_data {
 	 */
 	@Override
 	public long getUTC() {
-//		01/12/2017  10:49:08
-		DateFormat format = new SimpleDateFormat("dd.MM.yyyy  HH:mm:ss" );
+		SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
 		long milliseconds = 0;
 		try {
 			Date d = format.parse(this.FirstSeen);
+			format.getCalendar().getTime();
 		    milliseconds = d.getTime();
 			} catch (ParseException e) {
 			e.printStackTrace();
 		}
 		return milliseconds;
+		
 	}
 	
 	public String toString() {
