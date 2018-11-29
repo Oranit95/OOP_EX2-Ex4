@@ -1,5 +1,11 @@
 package GIS;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+
 import Geom.Point3D;
 
 public class metaData implements Meta_data {
@@ -8,30 +14,8 @@ public class metaData implements Meta_data {
 	public metaData(String ftSeen) {
 		FirstSeen = ftSeen;
 	}
-	
-	public String MAC() {
-		return MAC;
-	}
-	public String SSID() {
-		return SSID;
-	}
-	public String AuthMode() {
-		return AuthMode;
-	}
 	public String FirstSeen() {
 		return FirstSeen;
-	}
-	public String Channel() {
-		return Channel;
-	}
-	public String RSSI() {
-		return RSSI;
-	}
-	public String AccuracyMeters() {
-		return AccuracyMeters;
-	}
-	public String Type() {
-		return Type;
 	}
 	
 	/**
@@ -39,17 +23,24 @@ public class metaData implements Meta_data {
 	 */
 	@Override
 	public long getUTC() {
-		
-		return 0;
+//		01/12/2017  10:49:08
+		DateFormat format = new SimpleDateFormat("dd.MM.yyyy  HH:mm:ss" );
+		long milliseconds = 0;
+		try {
+			Date d = format.parse(this.FirstSeen);
+		    milliseconds = d.getTime();
+			} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		return milliseconds;
 	}
 	
 	public String toString() {
-		return this.MAC()+" "+this.SSID()+" "+this.AuthMode()+" "+this.FirstSeen()+" "+this.Channel()+" "+this.RSSI()+" "+this.AccuracyMeters()+" "+this.Type();
+		return FirstSeen;
 	}
 
 	@Override
 	public Point3D get_Orientation() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
