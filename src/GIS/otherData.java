@@ -2,11 +2,18 @@ package GIS;
 
 import Geom.Point3D;
 
-public class metaData implements Meta_data {
-	private String FirstSeen;
+public class otherData implements Meta_data {
+	private String MAC, SSID, AuthMode,	FirstSeen, Channel,	RSSI, AccuracyMeters, Type;
 	
-	public metaData(String ftSeen) {
+	public otherData(String mac, String ssid,String authMode, String ftSeen, String channel, String rssi, String accuMeters, String type) {
+		MAC = mac;
+		SSID = ssid;
+		AuthMode = authMode;
 		FirstSeen = ftSeen;
+		Channel = channel;
+		RSSI = rssi;
+		AccuracyMeters = accuMeters;
+		Type = type;
 	}
 	
 	public String MAC() {

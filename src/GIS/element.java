@@ -6,10 +6,11 @@ import Geom.Point3D;
 public class element implements GIS_element {
 	private Point3D Point;
 	private metaData Data;
+	private otherData other;
 
 	public element(String mac, String ssid,String authMode, String ftSeen, String channel, String rssi, String lat, String lon, String alt, String accuMeters, String type) {
 		Point = new Point3D(lat,lon,alt);
-		Data = new metaData(mac,ssid,authMode,ftSeen,channel,rssi,accuMeters,type);
+		Data = new metaData(ftSeen);
 	}
 	
 	

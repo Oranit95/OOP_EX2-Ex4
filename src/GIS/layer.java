@@ -2,38 +2,21 @@ package GIS;
 
 import java.util.Collection;
 import java.util.Iterator;
-import java.util.*;
+import java.util.LinkedHashSet;
+import java.util.Set;
 
-public class layer extends ArrayList<element>  {
-	private static final long serialVersionUID = 1L;
-
+public class layer {
+	private Set<GIS_element> set;
 	
-	@Override
-	public boolean contains(Object arg0) {
-		// TODO Auto-generated method stub
-		return false;
+
+
+	public layer() {
+		set = new LinkedHashSet<GIS_element>();
 	}
-
-	@Override
-	public boolean containsAll(Collection<?> arg0) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-
-	@Override
-	public Iterator<element> iterator() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
+	
 	public Meta_data get_Meta_data() {
 		// TODO Auto-generated method stub
 		return null;
-	}
-	@Override
-	public String toString () {
-		return this.toString();
 	}
 
 }
