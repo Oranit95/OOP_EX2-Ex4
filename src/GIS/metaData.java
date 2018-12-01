@@ -5,10 +5,17 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
 import Geom.Point3D;
-
+/**
+ * A representation of Time stamp of a point
+ * @author Oranit
+ * @author Tal
+ */
 public class metaData implements Meta_data {
 	private String FirstSeen;
-	
+	/**
+	 * FirstSeen as called in the csv file
+	 * @param ftSeen
+	 */
 	public metaData(String ftSeen) {
 		FirstSeen = ftSeen;
 	}

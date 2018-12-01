@@ -10,14 +10,20 @@ import java.util.Iterator;
 
 import GIS.*;
 import Geom.Point3D;
-
+/**
+ * A class that converts csv files to kml, in order to present them in "Google Earth".
+ * @author Oranit
+ * @author Tal
+ *
+ */
 public class csv2kml 
 {
-	public static void main(String[] args) {
-		layer lay = new layer();
-//		csvReader("WigleWifi_20171203085618.csv", lay);
-//		kmlWriter("3_out.kml", lay);
-	}
+
+	/**
+	 * A kml writer
+	 * @param name the name of the file requested.
+	 * @param layer using the layer's elements to write the kml file.
+	 */
 	public void kmlWriter(String name, layer layer) {
 
 		String fileName = name+".kml";
@@ -31,7 +37,7 @@ public class csv2kml
 			e.printStackTrace();
 			return;
 		}
-		
+		// This is a constante pattern to begin each kml file
 		StringBuilder sb0 = new StringBuilder();
 		sb0.append("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n" + "");
 		sb0.append("<kml xmlns=\"http://www.opengis.net/kml/2.2\"><Document><Style"
@@ -41,30 +47,36 @@ public class csv2kml
 		pw.write(sb0.toString());
 
 		Iterator<element> it = layer.iterator();
-		while(it.hasNext()) {
+		while(it.hasNext()) {//each element will be translated to a kml file.
 			element gis = it.next();
 			metaData mD = (metaData) gis.getData();
 			Point3D pD = (Point3D) gis.getGeom();
 			StringBuilder sb1 = new StringBuilder();
 			sb1.append("<Placemark>\n");
-			sb1.append("<name><![CDATA["+gis.getOtherData().SSID()+"]]></name>\n");	
-			sb1.append("<description><![CDATA[BSSID: <b>"+gis.getOtherData().MAC()+"</b><br/>");
-			sb1.append("Capabilities: <b>"+gis.getOtherData().AuthMode()+"</b><br/>");
-			sb1.append("Frequency: <b>"+gis.getOtherData().RSSI()+"</b><br/>");
-			sb1.append("Timestamp: <b>"+gis.getData().getUTC()+"</b><br/>");
-			sb1.append("Date: <b>"+mD.FirstSeen()+"</b>]]></description><styleUrl>#red</styleUrl>\n");
+			sb1.append("<name><![CDATA["+gis.getOtherData().SSID()+"]]></name>\n");	//adding ssid
+			sb1.append("<description><![CDATA[BSSID: <b>"+gis.getOtherData().MAC()+"</b><br/>");//adding mac
+			sb1.append("Capabilities: <b>"+gis.getOtherData().AuthMode()+"</b><br/>");//adding authmode
+			sb1.append("Frequency: <b>"+gis.getOtherData().RSSI()+"</b><br/>"); //adding rssi
+			sb1.append("Timestamp: <b>"+gis.getData().getUTC()+"</b><br/>");//adding a timestamp using utc
+			sb1.append("Date: <b>"+mD.FirstSeen()+"</b>]]></description><styleUrl>#red</styleUrl>\n");//adding the time
 			sb1.append("<Point>\n");
-			sb1.append("<coordinates>"+pD.x()+","+pD.y()+"</coordinates></Point>\n");
+			sb1.append("<coordinates>"+pD.x()+","+pD.y()+"</coordinates></Point>\n");//adding coordinates
 			sb1.append("</Placemark>\n");
-			pw.write(sb1.toString());
+			pw.write(sb1.toString());//writing the element's details in the file
 		}
+		// This is a constante pattern to end each kml file
 		StringBuilder sb2 = new StringBuilder();
 		sb2.append("</Folder>\n");
 		sb2.append("</Document></kml>");
 		pw.write(sb2.toString());
-		pw.close();
+		pw.close();//closing the file
 	}
-
+/**
+ * A csv reader tha enters each line in the csv file to a new elemnt,
+ *  and than the element to a new layer.
+ * @param name the name of the file that we want to read
+ * @param layer the layer that we want to enter the data to.
+ */
 	public void csvReader(String name, layer layer) {
 		String csvFile = name;
 		String line = "";

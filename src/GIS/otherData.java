@@ -1,6 +1,10 @@
 package GIS;
 
-
+/**
+ * A class that collect all the information about an element that isn't time stamp or coordinates.
+ *@author Oranit
+ *@author Tal
+ */
 public class otherData {
 	private String MAC, SSID, AuthMode, Channel,	RSSI, AccuracyMeters, Type;
 	
