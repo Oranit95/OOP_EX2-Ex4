@@ -6,7 +6,11 @@ import File_format.csv2kml;
 
 public class MultyCSV {
 		project project;
-	
+		File file;
+
+	public MultyCSV() {
+		project = new project();
+	}
 	public File findFile(File dir) {
 		  File result = null; 
 		  File[] dirlist = dir.listFiles();
@@ -19,7 +23,8 @@ public class MultyCSV {
 		    	csv2kml csv2kml = new csv2kml();
 		    	csv2kml.csvReader(dirlist[i].getParent()+"\\"+dirlist[i].getName(), layer);
 		    	int j = dirlist[i].getName().indexOf(".csv");
-		    	csv2kml.kmlWriter(dirlist[i].getName().substring(0, j), layer);
+		    	//in case we got any unvalid csv files.
+		    	if(!layer.isEmpty()) csv2kml.kmlWriter(dirlist[i].getName().substring(0, j), layer);
 		    	project.add(layer);
 		    }
 		  }

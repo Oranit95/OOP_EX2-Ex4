@@ -18,13 +18,42 @@ import Geom.Point3D;
  */
 public class csv2kml 
 {
+	/**
+	 * A csv reader tha enters each line in the csv file to a new elemnt,
+	 *  and than the element to a new layer.
+	 * @param name the name of the file that we want to read
+	 * @param layer the layer that we want to enter the data to.
+	 */
+	public boolean csvReader(String name, layer layer) {
+		String csvFile = name;
+		String line = "";
+		int row = 0;
+
+		try (BufferedReader br = new BufferedReader(new FileReader(csvFile))) {
+			while ((line = br.readLine()) != null) {
+				row++;
+				if(row>2) {
+					String[] data = line.split(",");
+					//making sure we got valid csv files.
+					if(data.length==11) {
+						layer.add(new element(data[0],data[1],data[2],data[3],data[4],data[5],data[7],data[6],data[8],data[9],data[10]));
+					}
+				}
+			}
+			return true;
+		} 
+		catch (IOException e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
 
 	/**
 	 * A kml writer
 	 * @param name the name of the file requested.
 	 * @param layer using the layer's elements to write the kml file.
 	 */
-	public void kmlWriter(String name, layer layer) {
+	public boolean kmlWriter(String name, layer layer) {
 
 		String fileName = name+".kml";
 		PrintWriter pw = null;
@@ -35,7 +64,7 @@ public class csv2kml
 		catch (FileNotFoundException e) 
 		{
 			e.printStackTrace();
-			return;
+			return false;
 		}
 		// This is a constante pattern to begin each kml file
 		StringBuilder sb0 = new StringBuilder();
@@ -70,29 +99,6 @@ public class csv2kml
 		sb2.append("</Document></kml>");
 		pw.write(sb2.toString());
 		pw.close();//closing the file
-	}
-/**
- * A csv reader tha enters each line in the csv file to a new elemnt,
- *  and than the element to a new layer.
- * @param name the name of the file that we want to read
- * @param layer the layer that we want to enter the data to.
- */
-	public void csvReader(String name, layer layer) {
-		String csvFile = name;
-		String line = "";
-		int row = 0;
-
-		try (BufferedReader br = new BufferedReader(new FileReader(csvFile))) {
-			while ((line = br.readLine()) != null) {
-				row++;
-				if(row>2) {
-					String[] data = line.split(",");
-					layer.add(new element(data[0],data[1],data[2],data[3],data[4],data[5],data[7],data[6],data[8],data[9],data[10]));	
-				}
-			}
-		} 
-		catch (IOException e) {
-			e.printStackTrace();
-		}
+		return true;
 	}
 }
