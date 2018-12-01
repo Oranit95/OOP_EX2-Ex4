@@ -21,16 +21,16 @@ public class metaData implements Meta_data {
 	 */
 	@Override
 	public long getUTC() {
-		SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		long milliseconds = 0;
 		try {
 			Date d = format.parse(this.FirstSeen);
-			format.getCalendar().getTime();
 		    milliseconds = d.getTime();
-			} catch (ParseException e) {
+			}
+		catch (ParseException e) {
 			e.printStackTrace();
 		}
-		return milliseconds;
+		return Math.abs(milliseconds);
 		
 	}
 	
