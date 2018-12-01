@@ -1,77 +1,32 @@
 package GIS;
 
-import java.util.Collection;
-import java.util.Iterator;
+import java.util.ArrayList;
+import java.util.Date;
 
-public class project implements GIS_project {
+public class project extends ArrayList<layer> implements GIS_project {
+	private Meta_data data;
+	private Date date;
+	private layer layer;
 
-	@Override
-	public boolean add(GIS_layer e) {
-		return false;
+
+	@SuppressWarnings("deprecation")
+	public project() {
+		date = new Date();
+		String time = String.valueOf(date.getDate())+"/"+String.valueOf(date.getMonth())+"/"+String.valueOf(date.getYear())+" "+String.valueOf(date.getHours())+":"+String.valueOf(date.getMinutes())+":"+String.valueOf(date.getSeconds());
+		data = new metaData(time);
+		layer = new layer();
 	}
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
-	@Override
-	public boolean addAll(Collection<? extends GIS_layer> c) {
-		return false;
-	}
-
-	@Override
-	public void clear() {		
-	}
-
-	@Override
-	public boolean contains(Object o) {
-		return false;
-	}
-
-	@Override
-	public boolean containsAll(Collection<?> c) {
-		return false;
-	}
-
-	@Override
-	public boolean isEmpty() {
-		return false;
-	}
-
-	@Override
-	public Iterator<GIS_layer> iterator() {
-		return null;
-	}
-
-	@Override
-	public boolean remove(Object o) {
-		return false;
-	}
-
-	@Override
-	public boolean removeAll(Collection<?> c) {
-		return false;
-	}
-
-	@Override
-	public boolean retainAll(Collection<?> c) {
-		return false;
-	}
-
-	@Override
-	public int size() {
-		return 0;
-	}
-
-	@Override
-	public Object[] toArray() {
-		return null;
-	}
-
-	@Override
-	public <T> T[] toArray(T[] a) {
-		return null;
-	}
-
-	@Override
 	public Meta_data get_Meta_data() {
-		return null;
+		return data;
+	}
+
+	public layer getLayer() {
+		return layer;
 	}
 
 }

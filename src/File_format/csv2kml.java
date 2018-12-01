@@ -15,12 +15,12 @@ public class csv2kml
 {
 	public static void main(String[] args) {
 		layer lay = new layer();
-		csvReader("WigleWifi_20171203085618.csv", lay);
-		kmlWriter("3_out.kml", lay);
+//		csvReader("WigleWifi_20171203085618.csv", lay);
+//		kmlWriter("3_out.kml", lay);
 	}
-	public static void kmlWriter(String name, layer layer) {
+	public void kmlWriter(String name, layer layer) {
 
-		String fileName = name;
+		String fileName = name+".kml";
 		PrintWriter pw = null;
 		try 
 		{
@@ -65,7 +65,7 @@ public class csv2kml
 		pw.close();
 	}
 
-	public static void csvReader(String name, layer layer) {
+	public void csvReader(String name, layer layer) {
 		String csvFile = name;
 		String line = "";
 		int row = 0;

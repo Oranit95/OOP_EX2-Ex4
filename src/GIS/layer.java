@@ -4,7 +4,7 @@ package GIS;
 import java.util.ArrayList;
 import java.util.Date;
 
-public class layer extends ArrayList<element> {
+public class layer extends ArrayList<element> implements GIS_layer {
 	private static final long serialVersionUID = 1L;
 
 	private Meta_data data;
