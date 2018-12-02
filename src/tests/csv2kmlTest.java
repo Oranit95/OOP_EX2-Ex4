@@ -1,7 +1,9 @@
-package File_format;
+package tests;
 
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
+
+import File_format.csv2kml;
 import GIS.*;
 class csv2kmlTest {
 

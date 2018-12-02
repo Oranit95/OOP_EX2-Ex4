@@ -1,4 +1,4 @@
-package Coords;
+package tests;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -6,6 +6,7 @@ import java.util.Arrays;
 
 import org.junit.jupiter.api.Test;
 
+import Coords.MyCoords;
 import Geom.Point3D;
 
 class MyCoordsTest {
